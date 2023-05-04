@@ -30,6 +30,16 @@ class MainWindow(QMainWindow):
         price_row.addWidget(price_label)
         price_row.addWidget(price_spinbox)
 
+        percentage_row = QHBoxLayout()
+        percentage_label = QLabel("Percentage:")
+        percentage_spinbox = QDoubleSpinBox()
+        percentage_spinbox.setMinimum(1)
+        percentage_spinbox.setSuffix("%")
+
+        percentage_row.addWidget(percentage_label)
+        percentage_row.addWidget(percentage_spinbox)
+
+
         button = QPushButton("calculate")
 
         text = QLineEdit()
@@ -40,6 +50,7 @@ class MainWindow(QMainWindow):
         # Add widgets to the layout
         layout.addWidget(title)
         layout.addLayout(price_row)
+        layout.addLayout(percentage_row)
         layout.addWidget(text)
         layout.addWidget(button)
 
