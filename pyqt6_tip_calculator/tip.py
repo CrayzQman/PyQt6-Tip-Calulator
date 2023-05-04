@@ -2,7 +2,8 @@ import sys
 
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton,
-                             QLineEdit, QLabel, QWidget, QVBoxLayout)
+                             QLineEdit, QLabel, QWidget, QVBoxLayout,
+                             QHBoxLayout, QDoubleSpinBox)
 
 
 # Subclass QMainWindow to customize your application's main window
@@ -13,12 +14,6 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Tip Calculator")
         layout = QVBoxLayout()
 
-        button = QPushButton("calculate")
-
-        text = QLineEdit()
-        text.setMaxLength(900)
-        text.setPlaceholderText("Enter your text")
-
         title = QLabel("Tip Calculator")
         font = title.font()
         font.setPointSize(30)
@@ -26,8 +21,25 @@ class MainWindow(QMainWindow):
         title.setAlignment(Qt.AlignmentFlag.AlignHCenter | 
                            Qt.AlignmentFlag.AlignTop)
 
+        price_row = QHBoxLayout()
+        price_label = QLabel("Price:")
+        price_spinbox = QDoubleSpinBox()
+        price_spinbox.setMinimum(0)
+        price_spinbox.setPrefix("$")
+
+        price_row.addWidget(price_label)
+        price_row.addWidget(price_spinbox)
+
+        button = QPushButton("calculate")
+
+        text = QLineEdit()
+        text.setMaxLength(900)
+        text.setPlaceholderText("Enter your text")
+
+        
         # Add widgets to the layout
         layout.addWidget(title)
+        layout.addLayout(price_row)
         layout.addWidget(text)
         layout.addWidget(button)
 
