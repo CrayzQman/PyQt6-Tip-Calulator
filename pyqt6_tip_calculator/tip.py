@@ -30,6 +30,7 @@ class MainWindow(QMainWindow):
         price_row.addWidget(price_label)
         price_row.addWidget(price_spinbox)
 
+
         percentage_row = QHBoxLayout()
         percentage_label = QLabel("Percentage:")
         percentage_spinbox = QDoubleSpinBox()
@@ -38,6 +39,15 @@ class MainWindow(QMainWindow):
 
         percentage_row.addWidget(percentage_label)
         percentage_row.addWidget(percentage_spinbox)
+
+
+        people_row = QHBoxLayout()
+        people_label = QLabel("People:")
+        people_spinbox = QDoubleSpinBox()
+        people_spinbox.setMinimum(1)
+
+        people_row.addWidget(people_label)
+        people_row.addWidget(people_spinbox)
 
 
         button = QPushButton("calculate")
@@ -51,6 +61,7 @@ class MainWindow(QMainWindow):
         layout.addWidget(title)
         layout.addLayout(price_row)
         layout.addLayout(percentage_row)
+        layout.addLayout(people_row)
         layout.addWidget(text)
         layout.addWidget(button)
 
