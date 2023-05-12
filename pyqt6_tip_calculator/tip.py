@@ -3,7 +3,8 @@ import sys
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton,
                              QLineEdit, QLabel, QWidget, QVBoxLayout,
-                             QHBoxLayout, QDoubleSpinBox, QSpinBox)
+                             QHBoxLayout, QDoubleSpinBox, QSpinBox,
+                             QWidget, )
 
 
 # Subclass QMainWindow to customize your application's main window
@@ -22,10 +23,9 @@ class MainWindow(QMainWindow):
                            Qt.AlignmentFlag.AlignVCenter)
 
         price_row = QHBoxLayout()
-        price_row.setAlignment(Qt.AlignmentFlag.AlignVCenter)
         price_label = QLabel("Price:")
-        price_spinbox = QDoubleSpinBox()
-        price_spinbox.setMinimum(0)
+        self.price_spinbox = QDoubleSpinBox()
+        self.price_spinbox.setMinimum(0)
         price_spinbox.setPrefix("$")
         
 
@@ -34,7 +34,6 @@ class MainWindow(QMainWindow):
 
 
         percentage_row = QHBoxLayout()
-        percentage_row.setAlignment(Qt.AlignmentFlag.AlignVCenter)
         percentage_label = QLabel("Percentage:")
         percentage_spinbox = QDoubleSpinBox()
         percentage_spinbox.setMinimum(1)
@@ -46,7 +45,6 @@ class MainWindow(QMainWindow):
 
 
         people_row = QHBoxLayout()
-        people_row.setAlignment(Qt.AlignmentFlag.AlignVCenter)
         people_label = QLabel("People:")
         people_spinbox = QSpinBox()
         people_spinbox.setMinimum(1)
@@ -71,13 +69,20 @@ class MainWindow(QMainWindow):
         widget.setLayout(layout)
         self.setCentralWidget(widget)
 
+        # Setting Alignment for Each row widget
+        price_row.setAlignment(Qt.AlignmentFlag.AlignVCenter)
+        percentage_row.setAlignment(Qt.AlignmentFlag.AlignVCenter)
+        people_row.setAlignment(Qt.AlignmentFlag.AlignVCenter)
+
+        # Set the main layout
+        gui = QWidget()
+        gui.setLayout(layout)
+        self.setCentralWidget(gui)
 
 
 
-
-app = QApplication(sys.argv)
-
-window = MainWindow()
-window.show()
-
-app.exec()
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    w = MainWindow()
+    w.show()
+    app.exec()
