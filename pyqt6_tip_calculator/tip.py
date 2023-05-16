@@ -22,47 +22,47 @@ class MainWindow(QMainWindow):
         title.setAlignment(Qt.AlignmentFlag.AlignHCenter | 
                            Qt.AlignmentFlag.AlignVCenter)
 
-        price_row = QHBoxLayout()
-        price_label = QLabel("Price:")
+        self.price_row = QHBoxLayout()
+        self.price_label = QLabel("Price:")
         self.price_spinbox = QDoubleSpinBox()
         self.price_spinbox.setMinimum(0)
-        price_spinbox.setPrefix("$")
+        self.price_spinbox.setPrefix("$")
         
 
-        price_row.addWidget(price_label)
-        price_row.addWidget(price_spinbox)
+        self.price_row.addWidget(self.price_label)
+        self.price_row.addWidget(self.price_spinbox)
 
 
-        percentage_row = QHBoxLayout()
-        percentage_label = QLabel("Percentage:")
-        percentage_spinbox = QDoubleSpinBox()
-        percentage_spinbox.setMinimum(1)
-        percentage_spinbox.setSuffix("%")
+        self.percentage_row = QHBoxLayout()
+        self.percentage_label = QLabel("Percentage:")
+        self.percentage_spinbox = QDoubleSpinBox()
+        self.percentage_spinbox.setMinimum(1)
+        self.percentage_spinbox.setSuffix("%")
         
 
-        percentage_row.addWidget(percentage_label)
-        percentage_row.addWidget(percentage_spinbox)
+        self.percentage_row.addWidget(self.percentage_label)
+        self.percentage_row.addWidget(self.percentage_spinbox)
 
 
-        people_row = QHBoxLayout()
-        people_label = QLabel("People:")
-        people_spinbox = QSpinBox()
-        people_spinbox.setMinimum(1)
+        self.people_row = QHBoxLayout()
+        self.people_label = QLabel("People:")
+        self.people_spinbox = QSpinBox()
+        self.people_spinbox.setMinimum(1)
         
 
-        people_row.addWidget(people_label)
-        people_row.addWidget(people_spinbox)
+        self.people_row.addWidget(self.people_label)
+        self.people_row.addWidget(self.people_spinbox)
 
 
-        button = QPushButton("Calculate")
+        self.button = QPushButton("Calculate")
 
 
         # Add widgets to the layout
         layout.addWidget(title)
-        layout.addLayout(price_row)
-        layout.addLayout(percentage_row)
-        layout.addLayout(people_row)
-        layout.addWidget(button)
+        layout.addLayout(self.price_row)
+        layout.addLayout(self.percentage_row)
+        layout.addLayout(self.people_row)
+        layout.addWidget(self.button)
 
         # Set the central widget of the Window.
         widget = QWidget()
@@ -70,9 +70,9 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(widget)
 
         # Setting Alignment for Each row widget
-        price_row.setAlignment(Qt.AlignmentFlag.AlignVCenter)
-        percentage_row.setAlignment(Qt.AlignmentFlag.AlignVCenter)
-        people_row.setAlignment(Qt.AlignmentFlag.AlignVCenter)
+        self.price_row.setAlignment(Qt.AlignmentFlag.AlignVCenter)
+        self.percentage_row.setAlignment(Qt.AlignmentFlag.AlignVCenter)
+        self.people_row.setAlignment(Qt.AlignmentFlag.AlignVCenter)
 
         # Set the main layout
         gui = QWidget()
